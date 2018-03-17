@@ -2,4 +2,4 @@
 
 require 'ats/cli'
 
-Ats::Cli::Application.start(ARGV)
+ATS::CLI::Application.start(ARGV)

@@ -5,7 +5,7 @@ require "ats/cli/version"
 
 Gem::Specification.new do |spec|
   spec.name          = "ats-cli"
-  spec.version       = Ats::Cli::VERSION
+  spec.version       = ATS::CLI::VERSION
   spec.authors       = ["mokha"]
   spec.email         = ["mokha@cisco.com"]
 
