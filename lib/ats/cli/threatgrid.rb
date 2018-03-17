@@ -8,8 +8,7 @@ module ATS
 
       desc 'whoami', 'whoami'
       def whoami
-        puts configuration.inspect
-        say api.whoami
+        say JSON.pretty_generate(api.whoami)
       end
 
       private
@@ -19,11 +18,11 @@ module ATS
       end
 
       def api_key
-        configuration[:threatgrid][:api_key]
+        configuration['threatgrid']['api_key']
       end
 
       def api_host
-        configuration[:threatgrid][:api_host]
+        configuration['threatgrid']['api_host']
       end
 
       def configuration
