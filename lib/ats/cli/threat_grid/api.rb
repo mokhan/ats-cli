@@ -9,12 +9,11 @@ module ATS
           'User-Agent' => "ATS/CLI #{ATS::CLI::VERSION}",
         }.freeze
 
-        attr_reader :http, :api_key, :api_host
+        attr_reader :http, :profile
 
-        def initialize(api: HttpAPI.new(headers: HEADERS), api_key:, api_host:)
+        def initialize(api: HttpAPI.new(headers: HEADERS), profile: :default)
           @http = api
-          @api_key = api_key
-          @api_host = api_host
+          @profile = profile.to_s
         end
 
         def whoami
@@ -31,6 +30,18 @@ module ATS
 
         def default_payload
           { api_key: api_key }
+        end
+
+        def api_key
+          configuration[profile]['threatgrid']['api_key']
+        end
+
+        def api_host
+          configuration[profile]['threatgrid']['api_host']
+        end
+
+        def configuration
+          YAML.load(IO.read('.atsrc'))
         end
       end
     end
