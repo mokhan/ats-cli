@@ -27,6 +27,10 @@ module ATS
         ATS::AMP4E::Events.new(self)
       end
 
+      def groups
+        ATS::AMP4E::Groups.new(self)
+      end
+
       def get(url, params: {}, version: 1)
         http.get(build_uri(url, version: version), headers: headers, body: params) do |request, response|
           JSON.parse(response.body, symbolize_names: true)

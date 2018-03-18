@@ -9,6 +9,9 @@ module ATS
 
         desc 'events SUBCOMMAND ...ARGS', 'interact with the AMP4E API'
         subcommand :events, ATS::CLI::AMP4E::Events
+
+        desc 'groups SUBCOMMAND ...ARGS', 'interact with the AMP4E API'
+        subcommand :groups, ATS::CLI::AMP4E::Groups
       end
     end
   end
