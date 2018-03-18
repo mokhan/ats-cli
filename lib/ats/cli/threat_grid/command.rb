@@ -16,6 +16,10 @@ module ATS
         def api
           ATS::ThreatGrid::API.new(profile: options['profile'])
         end
+
+        def print_json(json)
+          say JSON.pretty_generate(json)
+        end
       end
     end
   end
