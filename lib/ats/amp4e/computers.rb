@@ -14,6 +14,10 @@ module ATS
       def show(id)
         api.get("computers/#{id}")
       end
+
+      def trajectory(id)
+        api.get("computers/#{id}/trajectory")
+      end
     end
   end
 end

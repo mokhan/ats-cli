@@ -13,6 +13,11 @@ module ATS
         def show(id)
           print_json api.computers.show(id)
         end
+
+        desc 'trajectory <UUID>', 'list'
+        def trajectory(id)
+          print_json api.computers.trajectory(id)
+        end
       end
     end
   end
