@@ -26,6 +26,10 @@ module ATS
       def user_trajectory(id, query)
         api.get("computers/#{id}/user_trajectory", params: { q: query })
       end
+
+      def activity(query)
+        api.get("computers/activity", params: { q: query })
+      end
     end
   end
 end
