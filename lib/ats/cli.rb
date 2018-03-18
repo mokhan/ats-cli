@@ -1,6 +1,6 @@
-require 'thor'
-
 require 'ats'
+
+require 'thor'
 require 'ats/cli/threat_grid'
 
 module ATS
