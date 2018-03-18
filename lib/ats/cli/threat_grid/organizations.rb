@@ -2,8 +2,6 @@ module ATS
   module CLI
     module ThreatGrid
       class Organizations < Command
-        class_option :profile, default: :default, required: false
-
         desc 'search <TERM>', 'search'
         def search(term)
           say JSON.pretty_generate(api.organizations.search(term))
@@ -37,12 +35,6 @@ module ATS
         desc 'entitlements <ORG_ID>', 'entitlements'
         def entitlements(org_id)
           say JSON.pretty_generate(api.organizations.entitlements(org_id))
-        end
-
-        private
-
-        def api
-          ATS::ThreatGrid::API.new(profile: options['profile'])
         end
       end
     end

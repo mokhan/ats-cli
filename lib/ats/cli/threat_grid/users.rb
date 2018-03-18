@@ -2,8 +2,6 @@ module ATS
   module CLI
     module ThreatGrid
       class Users < Command
-        class_option :profile, default: :default, required: false
-
         desc 'show <login>', 'show'
         def show(login)
           say JSON.pretty_generate(api.users.show(login))
@@ -27,12 +25,6 @@ module ATS
         desc 'rate-limit <login>', 'rate-limit'
         def rate_limit(login)
           say JSON.pretty_generate(api.users.rate_limit(login))
-        end
-
-        private
-
-        def api
-          ATS::ThreatGrid::API.new(profile: options['profile'])
         end
       end
     end
