@@ -16,6 +16,10 @@ module ATS
         def samples(login)
           api.get("users/#{login}/samples")
         end
+
+        def rate_limit(login)
+          api.get("users/#{login}/rate-limit")
+        end
       end
     end
   end

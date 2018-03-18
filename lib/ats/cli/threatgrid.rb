@@ -19,6 +19,11 @@ module ATS
           say JSON.pretty_generate(api.users.samples(login))
         end
 
+        desc 'rate-limit <login>', 'rate-limit'
+        def rate_limit(login)
+          say JSON.pretty_generate(api.users.rate_limit(login))
+        end
+
         private
 
         def api
