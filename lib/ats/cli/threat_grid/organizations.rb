@@ -42,7 +42,7 @@ module ATS
         private
 
         def api
-          ThreatGrid::API.new(profile: options['profile'])
+          ATS::ThreatGrid::API.new(profile: options['profile'])
         end
       end
     end

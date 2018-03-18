@@ -7,10 +7,10 @@ module ATS
       class_option :profile, default: :default, required: false
 
       desc 'users SUBCOMMAND ...ARGS', 'interact with the Threat Grid API'
-      subcommand 'users', Users
+      subcommand :users, Users
 
       desc 'organizations SUBCOMMAND ...ARGS', 'interact with the Threat Grid API'
-      subcommand 'organizations', Organizations
+      subcommand :organizations, Organizations
 
       desc 'whoami', 'whoami'
       def whoami
