@@ -42,10 +42,15 @@ module ATS
         say "New file created at #{new_file}."
         yaml = YAML.dump({
           default: {
+            amp4e: {
+              api_host: 'https://api.amp.cisco.com',
+              client_id: '',
+              client_secret: '',
+            },
             threat_grid: {
               api_host: 'https://example.com',
               api_key: 'secret'
-            }
+            },
           }
         })
         say yaml, :yellow
