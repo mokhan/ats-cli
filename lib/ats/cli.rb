@@ -13,7 +13,7 @@ module ATS
 
       desc 'version', 'Display the current version'
       def version
-        say ATS::CLI::VERSION
+        say ATS::VERSION
       end
     end
   end
