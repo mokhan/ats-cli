@@ -8,6 +8,11 @@ module ATS
         def list
           print_json api.groups.list
         end
+
+        desc 'show <UUID>', 'list'
+        def show(id)
+          print_json api.groups.show(id)
+        end
       end
     end
   end
