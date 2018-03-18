@@ -48,11 +48,11 @@ module ATS
       end
 
       def api_key
-        configuration[profile]['threatgrid']['api_key']
+        configuration[profile]['threat_grid']['api_key']
       end
 
       def api_host
-        configuration[profile]['threatgrid']['api_host']
+        configuration[profile]['threat_grid']['api_host']
       end
 
       def configuration
