@@ -18,6 +18,11 @@ module ATS
         def trajectory(id)
           print_json api.computers.trajectory(id)
         end
+
+        desc 'user-activity <query>', 'list'
+        def user_activity(query)
+          print_json api.computers.user_activity(query)
+        end
       end
     end
   end
