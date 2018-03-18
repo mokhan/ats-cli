@@ -18,7 +18,7 @@ module ATS
         end
 
         def print_json(json)
-          say JSON.pretty_generate(json)
+          say JSON.pretty_generate(json), :green
         end
       end
     end
