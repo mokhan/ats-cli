@@ -9,6 +9,11 @@ module ATS
       class Users < Thor
         class_option :profile, default: :default, required: false
 
+        desc 'show <login>', 'show'
+        def show(login)
+          say JSON.pretty_generate(api.users.show(login))
+        end
+
         desc 'activity <login>', 'activity'
         def activity(login)
           say JSON.pretty_generate(api.users.activity(login))

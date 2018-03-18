@@ -8,6 +8,10 @@ module ATS
           @api = api
         end
 
+        def show(login)
+          api.get("users/#{login}")
+        end
+
         def activity(login)
           api.get("users/#{login}/activity")
         end
