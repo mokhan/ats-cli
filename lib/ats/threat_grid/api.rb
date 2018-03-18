@@ -32,6 +32,10 @@ module ATS
         ATS::ThreatGrid::Organizations.new(self)
       end
 
+      def samples
+        ATS::ThreatGrid::Samples.new(self)
+      end
+
       def get(url, params = {})
         http.get(build_uri(url), body: default_payload.merge(params)) do |request, response|
           JSON.parse(response.body, symbolize_names: true)[:data]

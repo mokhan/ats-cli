@@ -1,5 +1,6 @@
 require 'ats/cli/threat_grid/command'
 require 'ats/cli/threat_grid/organizations'
+require 'ats/cli/threat_grid/samples'
 require 'ats/cli/threat_grid/users'
 
 require 'ats/cli/threat_grid/application'

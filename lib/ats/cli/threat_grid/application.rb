@@ -10,6 +10,9 @@ module ATS
         desc 'organizations SUBCOMMAND ...ARGS', 'interact with the Threat Grid API'
         subcommand :organizations, ATS::CLI::ThreatGrid::Organizations
 
+        desc 'samples SUBCOMMAND ...ARGS', 'interact with the Threat Grid API'
+        subcommand :samples, ATS::CLI::ThreatGrid::Samples
+
         desc 'whoami', 'whoami'
         def whoami
           say JSON.pretty_generate(ATS::ThreatGrid::API.new(profile: options['profile']).whoami)
