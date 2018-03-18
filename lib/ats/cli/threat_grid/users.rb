@@ -1,7 +1,7 @@
 module ATS
   module CLI
-    class ThreatGrid < Thor
-      class Users < Thor
+    module ThreatGrid
+      class Users < Command
         class_option :profile, default: :default, required: false
 
         desc 'show <login>', 'show'

@@ -1,7 +1,7 @@
 module ATS
   module CLI
-    class ThreatGrid < Thor
-      class Organizations < Thor
+    module ThreatGrid
+      class Organizations < Command
         class_option :profile, default: :default, required: false
 
         desc 'search <TERM>', 'search'

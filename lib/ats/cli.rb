@@ -9,7 +9,7 @@ module ATS
       package_name "ATS"
 
       desc 'threatgrid SUBCOMMAND ...ARGS', 'interact with the Threat Grid API'
-      subcommand 'threatgrid', ThreatGrid
+      subcommand 'threatgrid', ThreatGrid::Application
 
       desc 'version', 'Display the current version'
       def version
