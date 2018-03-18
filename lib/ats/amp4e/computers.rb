@@ -10,6 +10,10 @@ module ATS
       def list
         api.get("computers")
       end
+
+      def show(id)
+        api.get("computers/#{id}")
+      end
     end
   end
 end
