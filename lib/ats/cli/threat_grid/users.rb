@@ -12,6 +12,10 @@ module ATS
         def activity(login)
           api.get("users/#{login}/activity")
         end
+
+        def samples(login)
+          api.get("users/#{login}/samples")
+        end
       end
     end
   end
