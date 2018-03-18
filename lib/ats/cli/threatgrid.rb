@@ -44,6 +44,11 @@ module ATS
       class Organizations < Thor
         class_option :profile, default: :default, required: false
 
+        desc 'search <TERM>', 'search'
+        def search(term)
+          say JSON.pretty_generate(api.organizations.search(term))
+        end
+
         desc 'list', 'list'
         def list
           say JSON.pretty_generate(api.organizations.list)

@@ -12,6 +12,10 @@ module ATS
           api.get("organizations")
         end
 
+        def search(term)
+          api.get("organizations", query: term)
+        end
+
         def show(id)
           api.get("organizations/#{id}")
         end
