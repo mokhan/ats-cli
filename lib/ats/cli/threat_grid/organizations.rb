@@ -11,6 +11,10 @@ module ATS
         def list
           api.get("organizations")
         end
+
+        def show(id)
+          api.get("organizations/#{id}")
+        end
       end
     end
   end

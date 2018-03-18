@@ -39,6 +39,11 @@ module ATS
           say JSON.pretty_generate(api.organizations.list)
         end
 
+        desc 'show <ORG_ID>', 'show'
+        def show(org_id)
+          say JSON.pretty_generate(api.organizations.show(org_id))
+        end
+
         private
 
         def api
