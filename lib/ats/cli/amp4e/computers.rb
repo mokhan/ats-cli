@@ -23,6 +23,11 @@ module ATS
         def user_activity(query)
           print_json api.computers.user_activity(query)
         end
+
+        desc 'user-trajectory <UUID> <query>', 'list'
+        def user_trajectory(id, query)
+          print_json api.computers.user_trajectory(id, query)
+        end
       end
     end
   end
