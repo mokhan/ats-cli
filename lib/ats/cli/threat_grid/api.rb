@@ -59,7 +59,14 @@ module ATS
         end
 
         def configuration
-          YAML.load(IO.read('.atsrc'))
+          [
+            File.join(Dir.home, ".atsrc"),
+            File.expand_path('.atsrc'),
+            ENV['ATSRC'],
+          ].compact.inject({}) do |memo, file|
+            memo.merge!(YAML.load(IO.read(file))) if File.exist?(file)
+            memo
+          end
         end
       end
     end
