@@ -30,6 +30,10 @@ module ATS
           ATS::CLI::ThreatGrid::Organizations.new(self)
         end
 
+        def entitlements
+          ATS::CLI::ThreatGrid::Entitlements.new(self)
+        end
+
         def get(url)
           http.get(build_uri(url), body: default_payload) do |request, response|
             JSON.parse(response.body, symbolize_names: true)[:data]

@@ -27,6 +27,10 @@ module ATS
         def user_activity(id)
           api.get("organizations/#{id}/user-activity")
         end
+
+        def entitlements(id)
+          api.get("organizations/#{id}/entitlements")
+        end
       end
     end
   end

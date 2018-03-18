@@ -69,6 +69,11 @@ module ATS
           say JSON.pretty_generate(api.organizations.user_activity(org_id))
         end
 
+        desc 'entitlements <ORG_ID>', 'entitlements'
+        def entitlements(org_id)
+          say JSON.pretty_generate(api.organizations.entitlements(org_id))
+        end
+
         private
 
         def api
@@ -76,10 +81,10 @@ module ATS
         end
       end
 
-      desc 'threatgrid SUBCOMMAND ...ARGS', 'interact with the Threat Grid API'
+      desc 'users SUBCOMMAND ...ARGS', 'interact with the Threat Grid API'
       subcommand 'users', Users
 
-      desc 'threatgrid SUBCOMMAND ...ARGS', 'interact with the Threat Grid API'
+      desc 'organizations SUBCOMMAND ...ARGS', 'interact with the Threat Grid API'
       subcommand 'organizations', Organizations
 
       desc 'whoami', 'whoami'
