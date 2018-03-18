@@ -1,12 +1,15 @@
+require 'base64'
 require 'json'
 require 'logger'
 require 'net/http'
 require 'yaml'
 
-require 'ats/version'
-
 require 'ats/configuration'
 require 'ats/http_api'
+require 'ats/version'
+
+require 'ats/amp4e/api'
+require 'ats/amp4e/computers'
 require 'ats/threat_grid/api'
 require 'ats/threat_grid/organizations'
 require 'ats/threat_grid/samples'

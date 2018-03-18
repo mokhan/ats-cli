@@ -2,6 +2,9 @@ require 'ats'
 
 require 'thor'
 require 'ats/cli/threat_grid'
+require 'ats/cli/amp4e/command'
+require 'ats/cli/amp4e/computers'
+require 'ats/cli/amp4e/application'
 
 module ATS
   module CLI
@@ -10,6 +13,9 @@ module ATS
 
       desc 'threatgrid SUBCOMMAND ...ARGS', 'interact with the Threat Grid API'
       subcommand 'threatgrid', ThreatGrid::Application
+
+      desc 'amp4e SUBCOMMAND ...ARGS', 'interact with the AMP for Endpoints API'
+      subcommand 'amp4e', AMP4E::Application
 
       desc 'version', 'Display the current version'
       def version
