@@ -1,6 +1,6 @@
 module ATS
   class Configuration
-    attr_accessor :logger, :config_files
+    attr_accessor :logger, :config_files, :configuration
 
     def initialize
       @logger = Logger.new(STDOUT)
