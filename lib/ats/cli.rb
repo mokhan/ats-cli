@@ -6,6 +6,8 @@ require 'ats/cli/threat_grid'
 module ATS
   module CLI
     class Application < Thor
+      package_name "ATS"
+
       desc 'threatgrid SUBCOMMAND ...ARGS', 'interact with the Threat Grid API'
       subcommand 'threatgrid', ThreatGrid
 
