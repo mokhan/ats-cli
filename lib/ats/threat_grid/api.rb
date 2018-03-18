@@ -36,8 +36,12 @@ module ATS
         ATS::ThreatGrid::Samples.new(self)
       end
 
-      def get(url, params = {})
-        http.get(build_uri(url), body: default_payload.merge(params)) do |request, response|
+      def search
+        ATS::ThreatGrid::Search.new(self)
+      end
+
+      def get(url, params: {}, version: 3)
+        http.get(build_uri(url, version: version), body: default_payload.merge(params)) do |request, response|
           JSON.parse(response.body, symbolize_names: true)[:data]
         end
       end
@@ -48,8 +52,8 @@ module ATS
         { api_key: api_key }
       end
 
-      def build_uri(relative_url)
-        URI.parse("#{api_host}/api/v3/#{relative_url}")
+      def build_uri(relative_url, version:)
+        URI.parse("#{api_host}/api/v#{version}/#{relative_url}")
       end
 
       def api_key

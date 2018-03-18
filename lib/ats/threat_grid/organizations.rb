@@ -12,7 +12,7 @@ module ATS
       end
 
       def search(term)
-        api.get("organizations", query: term)
+        api.get("organizations", params: { query: term })
       end
 
       def show(id)

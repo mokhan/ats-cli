@@ -13,6 +13,9 @@ module ATS
         desc 'samples SUBCOMMAND ...ARGS', 'interact with the Threat Grid API'
         subcommand :samples, ATS::CLI::ThreatGrid::Samples
 
+        desc 'search SUBCOMMAND ...ARGS', 'interact with the Threat Grid API'
+        subcommand :search, ATS::CLI::ThreatGrid::Search
+
         desc 'whoami', 'whoami'
         def whoami
           say JSON.pretty_generate(ATS::ThreatGrid::API.new(profile: options['profile']).whoami)
