@@ -1,16 +1,16 @@
 
 lib = File.expand_path("../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require "ats/cli/version"
+require "ats/version"
 
 Gem::Specification.new do |spec|
-  spec.name          = "ats-cli"
-  spec.version       = ATS::CLI::VERSION
+  spec.name          = "ats"
+  spec.version       = ATS::VERSION
   spec.authors       = ["mokha"]
-  spec.email         = ["mokha@cisco.com"]
+  spec.email         = ["mo@mokhan.ca"]
 
-  spec.summary       = %q{A CLI for interacting with advanced threat services.}
-  spec.description   = %q{A CLI for interacting with advanced threat services.}
+  spec.summary       = %q{A CLI for interacting with ATS.}
+  spec.description   = %q{A CLI for interacting with ATS.}
   spec.homepage      = "https://www.mokhan.ca/"
   spec.license       = "MIT"
 

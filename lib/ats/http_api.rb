@@ -1,6 +1,3 @@
-require 'json'
-require 'net/http'
-
 module ATS
   class HttpAPI
     def initialize(headers: {})
@@ -47,7 +44,7 @@ module ATS
       http = Net::HTTP.new(uri.host, uri.port)
       http.read_timeout = 30
       http.use_ssl = uri.is_a?(URI::HTTPS)
-      http.set_debug_output(ATS::CLI.logger)
+      http.set_debug_output(ATS.logger)
       http
     end
 

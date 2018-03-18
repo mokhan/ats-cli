@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    ats-cli (0.1.0)
+    ats (0.1.0)
       thor (~> 0.20)
 
 GEM
@@ -28,7 +28,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  ats-cli!
+  ats!
   bundler (~> 1.16)
   rake (~> 10.0)
   rspec (~> 3.0)

@@ -5,14 +5,19 @@ module ATS
     class API
       HEADERS = {
         'Content-Type' => 'application/json',
-        'User-Agent' => "ATS/CLI #{ATS::CLI::VERSION}",
+        'User-Agent' => "ATS/CLI #{ATS::VERSION}",
       }.freeze
 
-      attr_reader :http, :profile
+      attr_reader :http, :profile, :configuration
 
-      def initialize(api: HttpAPI.new(headers: HEADERS), profile: :default)
+      def initialize(
+        api: HttpAPI.new(headers: HEADERS),
+        profile: :default,
+        configuration: ATS.configuration
+      )
         @http = api
         @profile = profile.to_s
+        @configuration = configuration
       end
 
       def whoami
@@ -53,17 +58,6 @@ module ATS
 
       def api_host
         configuration[profile]['threat_grid']['api_host']
-      end
-
-      def configuration
-        [
-          File.join(Dir.home, ".atsrc"),
-          File.expand_path('.atsrc'),
-          ENV['ATSRC'],
-        ].compact.inject({}) do |memo, file|
-          memo.merge!(YAML.load(IO.read(file))) if File.exist?(file)
-          memo
-        end
       end
     end
   end
