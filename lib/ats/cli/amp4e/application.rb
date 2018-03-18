@@ -12,6 +12,9 @@ module ATS
 
         desc 'groups SUBCOMMAND ...ARGS', 'interact with the AMP4E API'
         subcommand :groups, ATS::CLI::AMP4E::Groups
+
+        desc 'policies SUBCOMMAND ...ARGS', 'interact with the AMP4E API'
+        subcommand :policies, ATS::CLI::AMP4E::Policies
       end
     end
   end

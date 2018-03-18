@@ -6,6 +6,7 @@ require 'ats/cli/amp4e/command'
 require 'ats/cli/amp4e/computers'
 require 'ats/cli/amp4e/events'
 require 'ats/cli/amp4e/groups'
+require 'ats/cli/amp4e/policies'
 require 'ats/cli/amp4e/application'
 
 module ATS
