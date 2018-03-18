@@ -5,7 +5,7 @@ module ATS
     class API
       HEADERS = {
         'Content-Type' => 'application/json',
-        'User-Agent' => "ATS/CLI #{ATS::VERSION}",
+        'User-Agent' => "RubyGems/ATS #{ATS::VERSION}",
       }.freeze
 
       attr_reader :http, :profile, :configuration
