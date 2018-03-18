@@ -10,6 +10,7 @@ require 'ats/version'
 
 require 'ats/amp4e/api'
 require 'ats/amp4e/computers'
+require 'ats/amp4e/events'
 require 'ats/threat_grid/api'
 require 'ats/threat_grid/organizations'
 require 'ats/threat_grid/samples'

@@ -6,6 +6,9 @@ module ATS
 
         desc 'computers SUBCOMMAND ...ARGS', 'interact with the Threat Grid API'
         subcommand :computers, ATS::CLI::AMP4E::Computers
+
+        desc 'events SUBCOMMAND ...ARGS', 'interact with the Threat Grid API'
+        subcommand :events, ATS::CLI::AMP4E::Events
       end
     end
   end

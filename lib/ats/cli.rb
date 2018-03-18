@@ -4,6 +4,7 @@ require 'thor'
 require 'ats/cli/threat_grid'
 require 'ats/cli/amp4e/command'
 require 'ats/cli/amp4e/computers'
+require 'ats/cli/amp4e/events'
 require 'ats/cli/amp4e/application'
 
 module ATS
