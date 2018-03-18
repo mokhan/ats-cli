@@ -1,4 +1,3 @@
-
 module ATS
   module CLI
     module ThreatGrid

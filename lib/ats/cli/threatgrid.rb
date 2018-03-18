@@ -31,8 +31,26 @@ module ATS
         end
       end
 
+      class Organizations < Thor
+        class_option :profile, default: :default, required: false
+
+        desc 'list', 'list'
+        def list
+          say JSON.pretty_generate(api.organizations.list)
+        end
+
+        private
+
+        def api
+          ThreatGrid::API.new(profile: options['profile'])
+        end
+      end
+
       desc 'threatgrid SUBCOMMAND ...ARGS', 'interact with the Threat Grid API'
       subcommand 'users', Users
+
+      desc 'threatgrid SUBCOMMAND ...ARGS', 'interact with the Threat Grid API'
+      subcommand 'organizations', Organizations
 
       desc 'whoami', 'whoami'
       def whoami

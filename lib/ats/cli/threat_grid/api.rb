@@ -1,5 +1,6 @@
 require 'ats/cli/http_api'
 require 'ats/cli/threat_grid/users'
+require 'ats/cli/threat_grid/organizations'
 
 module ATS
   module CLI
@@ -23,6 +24,10 @@ module ATS
 
         def users
           ATS::CLI::ThreatGrid::Users.new(self)
+        end
+
+        def organizations
+          ATS::CLI::ThreatGrid::Organizations.new(self)
         end
 
         def get(url)
