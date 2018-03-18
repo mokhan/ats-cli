@@ -14,6 +14,11 @@ module ATS
           say JSON.pretty_generate(api.users.show(login))
         end
 
+        desc 'organization <login>', 'organization'
+        def organization(login)
+          say JSON.pretty_generate(api.users.organization(login))
+        end
+
         desc 'activity <login>', 'activity'
         def activity(login)
           say JSON.pretty_generate(api.users.activity(login))

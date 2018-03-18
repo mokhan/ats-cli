@@ -12,6 +12,10 @@ module ATS
           api.get("users/#{login}")
         end
 
+        def organization(login)
+          api.get("users/#{login}/organization")
+        end
+
         def activity(login)
           api.get("users/#{login}/activity")
         end
