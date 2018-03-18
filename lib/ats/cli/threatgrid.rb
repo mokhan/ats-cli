@@ -54,6 +54,11 @@ module ATS
           say JSON.pretty_generate(api.organizations.samples(org_id))
         end
 
+        desc 'user-activity <ORG_ID>', 'user-activity'
+        def user_activity(org_id)
+          say JSON.pretty_generate(api.organizations.user_activity(org_id))
+        end
+
         private
 
         def api

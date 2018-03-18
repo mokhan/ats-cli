@@ -23,6 +23,10 @@ module ATS
         def samples(id)
           api.get("organizations/#{id}/samples")
         end
+
+        def user_activity(id)
+          api.get("organizations/#{id}/user-activity")
+        end
       end
     end
   end
