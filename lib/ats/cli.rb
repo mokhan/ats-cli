@@ -1,8 +1,11 @@
-require 'thor'
+require 'json'
 require 'logger'
+require 'thor'
+require 'yaml'
 
-require 'ats/cli/threatgrid'
+require 'ats/cli/threat_grid'
 require 'ats/cli/version'
+require 'ats/threat_grid'
 
 module ATS
   module CLI
@@ -12,7 +15,7 @@ module ATS
 
     class Application < Thor
       desc 'threatgrid SUBCOMMAND ...ARGS', 'interact with the Threat Grid API'
-      subcommand 'threatgrid', Threatgrid
+      subcommand 'threatgrid', ThreatGrid
 
       desc 'version', 'Display the current version'
       def version

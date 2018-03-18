@@ -1,39 +1,48 @@
 module ATS
   module CLI
-    module ThreatGrid
-      class Organizations
-        attr_reader :api
+    class ThreatGrid < Thor
+      class Organizations < Thor
+        class_option :profile, default: :default, required: false
 
-        def initialize(api)
-          @api = api
-        end
-
-        def list
-          api.get("organizations")
-        end
-
+        desc 'search <TERM>', 'search'
         def search(term)
-          api.get("organizations", query: term)
+          say JSON.pretty_generate(api.organizations.search(term))
         end
 
-        def show(id)
-          api.get("organizations/#{id}")
+        desc 'list', 'list'
+        def list
+          say JSON.pretty_generate(api.organizations.list)
         end
 
-        def users(id)
-          api.get("organizations/#{id}/users")
+        desc 'show <ORG_ID>', 'show'
+        def show(org_id)
+          say JSON.pretty_generate(api.organizations.show(org_id))
         end
 
-        def samples(id)
-          api.get("organizations/#{id}/samples")
+        desc 'users <ORG_ID>', 'users'
+        def users(org_id)
+          say JSON.pretty_generate(api.organizations.users(org_id))
         end
 
-        def user_activity(id)
-          api.get("organizations/#{id}/user-activity")
+        desc 'samples <ORG_ID>', 'samples'
+        def samples(org_id)
+          say JSON.pretty_generate(api.organizations.samples(org_id))
         end
 
-        def entitlements(id)
-          api.get("organizations/#{id}/entitlements")
+        desc 'user-activity <ORG_ID>', 'user-activity'
+        def user_activity(org_id)
+          say JSON.pretty_generate(api.organizations.user_activity(org_id))
+        end
+
+        desc 'entitlements <ORG_ID>', 'entitlements'
+        def entitlements(org_id)
+          say JSON.pretty_generate(api.organizations.entitlements(org_id))
+        end
+
+        private
+
+        def api
+          ThreatGrid::API.new(profile: options['profile'])
         end
       end
     end

@@ -1,31 +1,38 @@
 module ATS
   module CLI
-    module ThreatGrid
-      class Users
-        attr_reader :api
+    class ThreatGrid < Thor
+      class Users < Thor
+        class_option :profile, default: :default, required: false
 
-        def initialize(api)
-          @api = api
-        end
-
+        desc 'show <login>', 'show'
         def show(login)
-          api.get("users/#{login}")
+          say JSON.pretty_generate(api.users.show(login))
         end
 
+        desc 'organization <login>', 'organization'
         def organization(login)
-          api.get("users/#{login}/organization")
+          say JSON.pretty_generate(api.users.organization(login))
         end
 
+        desc 'activity <login>', 'activity'
         def activity(login)
-          api.get("users/#{login}/activity")
+          say JSON.pretty_generate(api.users.activity(login))
         end
 
+        desc 'samples <login>', 'samples'
         def samples(login)
-          api.get("users/#{login}/samples")
+          say JSON.pretty_generate(api.users.samples(login))
         end
 
+        desc 'rate-limit <login>', 'rate-limit'
         def rate_limit(login)
-          api.get("users/#{login}/rate-limit")
+          say JSON.pretty_generate(api.users.rate_limit(login))
+        end
+
+        private
+
+        def api
+          ThreatGrid::API.new(profile: options['profile'])
         end
       end
     end
