@@ -10,6 +10,10 @@ module ATS
       def list
         api.get("events")
       end
+
+      def types
+        api.get("event_types")
+      end
     end
   end
 end

@@ -4,10 +4,10 @@ module ATS
       class Application < Thor
         class_option :profile, default: :default, required: false
 
-        desc 'computers SUBCOMMAND ...ARGS', 'interact with the Threat Grid API'
+        desc 'computers SUBCOMMAND ...ARGS', 'interact with the AMP4E API'
         subcommand :computers, ATS::CLI::AMP4E::Computers
 
-        desc 'events SUBCOMMAND ...ARGS', 'interact with the Threat Grid API'
+        desc 'events SUBCOMMAND ...ARGS', 'interact with the AMP4E API'
         subcommand :events, ATS::CLI::AMP4E::Events
       end
     end
