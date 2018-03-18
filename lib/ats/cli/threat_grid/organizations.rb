@@ -19,6 +19,10 @@ module ATS
         def users(id)
           api.get("organizations/#{id}/users")
         end
+
+        def samples(id)
+          api.get("organizations/#{id}/samples")
+        end
       end
     end
   end
