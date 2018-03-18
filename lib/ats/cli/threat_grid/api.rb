@@ -1,4 +1,5 @@
 require 'ats/cli/http_api'
+require 'ats/cli/threat_grid/users'
 
 module ATS
   module CLI
@@ -17,19 +18,27 @@ module ATS
         end
 
         def whoami
-          http.get(build_uri("session/whoami"), body: default_payload) do |request, response|
+          get("session/whoami")
+        end
+
+        def users
+          ATS::CLI::ThreatGrid::Users.new(self)
+        end
+
+        def get(url)
+          http.get(build_uri(url), body: default_payload) do |request, response|
             JSON.parse(response.body, symbolize_names: true)[:data]
           end
         end
 
         private
 
-        def build_uri(relative_url)
-          URI.parse("#{api_host}/api/v3/#{relative_url}")
-        end
-
         def default_payload
           { api_key: api_key }
+        end
+
+        def build_uri(relative_url)
+          URI.parse("#{api_host}/api/v3/#{relative_url}")
         end
 
         def api_key
