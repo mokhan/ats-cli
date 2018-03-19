@@ -15,7 +15,7 @@ module ATS
         configuration: ATS.configuration
       )
         @http = api
-        @profile = profile.to_s
+        @profile = profile.to_sym
         @configuration = configuration
       end
 
