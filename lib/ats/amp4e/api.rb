@@ -7,11 +7,16 @@ module ATS
         'User-Agent' => "RubyGems/ATS #{ATS::VERSION}",
       }.freeze
 
-      attr_reader :http, :configuration
+      attr_reader :http, :port, :host, :scheme, :client_id, :client_secret
 
       def initialize(configuration:, debug: false)
         @http = HttpAPI.new(headers: HEADERS, debug: debug)
         @configuration = configuration
+        @port = configuration[:port]
+        @scheme = configuration[:scheme]
+        @host = configuration[:host]
+        @client_id = configuration[:client_id]
+        @client_secret = configuration[:client_secret]
       end
 
       def computers
@@ -40,26 +45,6 @@ module ATS
 
       def build_uri(relative_url, version:)
         URI::Generic.build(host: host, port: port, scheme: scheme, path: "/v#{version}/#{relative_url}")
-      end
-
-      def client_id
-        configuration[:client_id]
-      end
-
-      def client_secret
-        configuration[:client_secret]
-      end
-
-      def host
-        configuration[:host]
-      end
-
-      def scheme
-        configuration[:scheme]
-      end
-
-      def port
-        configuration[:port]
       end
 
       def headers
