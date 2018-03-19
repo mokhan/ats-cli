@@ -44,7 +44,7 @@ module ATS
       private
 
       def build_uri(relative_url, version:)
-        URI::Generic.build(host: host, scheme: scheme, path: "/v#{version}/#{relative_url}")
+        URI::Generic.build(host: host, port: port, scheme: scheme, path: "/v#{version}/#{relative_url}")
       end
 
       def client_id
@@ -61,6 +61,10 @@ module ATS
 
       def scheme
         configuration[profile][:amp4e][:scheme]
+      end
+
+      def port
+        configuration[profile][:amp4e][:port]
       end
 
       def headers

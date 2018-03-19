@@ -46,11 +46,13 @@ module ATS
               client_id: '',
               client_secret: '',
               host: 'api.amp.cisco.com',
+              port: 443,
               scheme: 'https',
             },
             threat_grid: {
               api_key: '',
               host: 'panacea.threatgrid.com',
+              port: 443,
               scheme: 'https',
             },
           }

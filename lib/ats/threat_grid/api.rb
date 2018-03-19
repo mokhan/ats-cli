@@ -53,7 +53,7 @@ module ATS
       end
 
       def build_uri(relative_url, version:)
-        URI::Generic.build(host: host, scheme: scheme, path: "/api/v#{version}/#{relative_url}")
+        URI::Generic.build(host: host, port: port, scheme: scheme, path: "/api/v#{version}/#{relative_url}")
       end
 
       def api_key
@@ -66,6 +66,10 @@ module ATS
 
       def scheme
         configuration[profile][:threat_grid][:scheme]
+      end
+
+      def port
+        configuration[profile][:threat_grid][:port]
       end
     end
   end

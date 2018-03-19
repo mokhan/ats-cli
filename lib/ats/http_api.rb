@@ -43,7 +43,7 @@ module ATS
     def http_for(uri)
       http = Net::HTTP.new(uri.host, uri.port)
       http.read_timeout = 30
-      http.use_ssl = uri.is_a?(URI::HTTPS)
+      http.use_ssl = uri.scheme == "https"
       http.set_debug_output(ATS.logger)
       http
     end
