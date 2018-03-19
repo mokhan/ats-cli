@@ -13,8 +13,8 @@ module ATS
       ].compact
     end
 
-    def [](key)
-      hash[key.to_sym]
+    def fetch(key)
+      hash.fetch(key.to_sym)
     end
 
     def to_h

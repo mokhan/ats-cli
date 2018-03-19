@@ -15,7 +15,7 @@ module ATS
 
       def api
         self.class.constant_name.new(
-          configuration: configuration[profile][self.class.service_name.downcase.to_sym],
+          configuration: configuration.fetch(profile)[self.class.service_name.downcase.to_sym],
           debug: configuration.debug,
         )
       end
