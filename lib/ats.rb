@@ -27,6 +27,7 @@ module ATS
 
     def configure
       yield configuration
+      configuration
     end
 
     def configuration

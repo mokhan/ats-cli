@@ -16,13 +16,19 @@ module ATS
       def api
         self.class.constant_name.new(
           profile: options['profile'],
-          configuration: ATS.configuration,
-          debug: options['debug'],
+          configuration: configuration,
+          debug: configuration.debug,
         )
       end
 
       def print_json(json)
         say JSON.pretty_generate(json), :green
+      end
+
+      def configuration
+        ATS.configure do |x|
+          x.debug = options['debug']
+        end
       end
 
       def self.constant_name
