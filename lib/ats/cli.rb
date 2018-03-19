@@ -32,7 +32,7 @@ module ATS
       desc 'setup', 'Initialize the .atsrc file.'
       def setup(configuration = ATS.configuration)
         say "Current Configuration:", :green
-        say JSON.pretty_generate(configuration.configuration), :green
+        say JSON.pretty_generate(configuration.to_h), :green
 
         configuration.config_files.each do |file|
           if File.exist?(file)

@@ -14,15 +14,22 @@ module ATS
     end
 
     def [](key)
-      @hash ||= load_configuration
-      @hash[key.to_sym]
+      hash[key.to_sym]
+    end
+
+    def to_h
+      hash.dup
     end
 
     private
 
+    def hash
+      @hash ||= load_configuration
+    end
+
     def load_configuration(files = config_files)
       files.inject({}) do |memo, file|
-        logger.debug("Loading... #{file}") if debug
+        logger.debug("Searching for #{file}...") if debug
         memo.merge!(YAML.load(IO.read(file))) if File.exist?(file)
         memo
       end
