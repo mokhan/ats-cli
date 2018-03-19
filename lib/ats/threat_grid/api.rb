@@ -8,11 +8,10 @@ module ATS
         'User-Agent' => "RubyGems/ATS #{ATS::VERSION}",
       }.freeze
 
-      attr_reader :http, :profile, :configuration
+      attr_reader :http, :configuration
 
-      def initialize(profile:, configuration:, debug: false)
+      def initialize(configuration:, debug: false)
         @http = HttpAPI.new(headers: HEADERS, debug: debug)
-        @profile = profile.to_sym
         @configuration = configuration
       end
 
@@ -53,19 +52,19 @@ module ATS
       end
 
       def api_key
-        configuration[profile][:threat_grid][:api_key]
+        configuration[:api_key]
       end
 
       def host
-        configuration[profile][:threat_grid][:host]
+        configuration[:host]
       end
 
       def scheme
-        configuration[profile][:threat_grid][:scheme]
+        configuration[:scheme]
       end
 
       def port
-        configuration[profile][:threat_grid][:port]
+        configuration[:port]
       end
     end
   end

@@ -53,7 +53,7 @@ module ATS
               port: 443,
               scheme: 'https',
             },
-            threat_grid: {
+            threatgrid: {
               api_key: '',
               host: 'panacea.threatgrid.com',
               port: 443,

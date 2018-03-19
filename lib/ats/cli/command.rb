@@ -15,8 +15,7 @@ module ATS
 
       def api
         self.class.constant_name.new(
-          profile: options['profile'],
-          configuration: configuration,
+          configuration: configuration[profile][self.class.service_name.downcase.to_sym],
           debug: configuration.debug,
         )
       end
@@ -29,6 +28,10 @@ module ATS
         ATS.configure do |x|
           x.debug = options['debug']
         end
+      end
+
+      def profile
+        options['profile'].to_sym
       end
 
       def self.constant_name

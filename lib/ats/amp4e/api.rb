@@ -7,11 +7,10 @@ module ATS
         'User-Agent' => "RubyGems/ATS #{ATS::VERSION}",
       }.freeze
 
-      attr_reader :http, :profile, :configuration
+      attr_reader :http, :configuration
 
-      def initialize(profile:, configuration:, debug: false)
+      def initialize(configuration:, debug: false)
         @http = HttpAPI.new(headers: HEADERS, debug: debug)
-        @profile = profile.to_sym
         @configuration = configuration
       end
 
@@ -44,23 +43,23 @@ module ATS
       end
 
       def client_id
-        configuration[profile][:amp4e][:client_id]
+        configuration[:client_id]
       end
 
       def client_secret
-        configuration[profile][:amp4e][:client_secret]
+        configuration[:client_secret]
       end
 
       def host
-        configuration[profile][:amp4e][:host]
+        configuration[:host]
       end
 
       def scheme
-        configuration[profile][:amp4e][:scheme]
+        configuration[:scheme]
       end
 
       def port
-        configuration[profile][:amp4e][:port]
+        configuration[:port]
       end
 
       def headers

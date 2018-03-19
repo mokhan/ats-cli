@@ -1,6 +1,6 @@
 module ATS
   class Configuration
-    attr_accessor :logger, :config_files, :configuration, :debug
+    attr_accessor :logger, :config_files, :debug
 
     def initialize
       @logger = Logger.new(STDOUT)
@@ -14,9 +14,11 @@ module ATS
     end
 
     def [](key)
-      @configuration ||= load_configuration
-      @configuration[key.to_sym]
+      @hash ||= load_configuration
+      @hash[key.to_sym]
     end
+
+    private
 
     def load_configuration(files = config_files)
       files.inject({}) do |memo, file|
