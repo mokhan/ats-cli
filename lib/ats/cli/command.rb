@@ -2,6 +2,7 @@ module ATS
   module CLI
     class Command < Thor
       class_option :profile, default: :default, required: false
+      class_option :debug, default: false, required: false
 
       def self.printable_commands(*args)
         super.map do |x|
@@ -13,7 +14,11 @@ module ATS
       protected
 
       def api
-        self.class.constant_name.new(profile: options['profile'])
+        self.class.constant_name.new(
+          profile: options['profile'],
+          configuration: ATS.configuration,
+          debug: options['debug'],
+        )
       end
 
       def print_json(json)

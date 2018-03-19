@@ -10,12 +10,8 @@ module ATS
 
       attr_reader :http, :profile, :configuration
 
-      def initialize(
-        api: HttpAPI.new(headers: HEADERS),
-        profile: :default,
-        configuration: ATS.configuration
-      )
-        @http = api
+      def initialize(profile:, configuration:, debug: false)
+        @http = HttpAPI.new(headers: HEADERS, debug: debug)
         @profile = profile.to_sym
         @configuration = configuration
       end

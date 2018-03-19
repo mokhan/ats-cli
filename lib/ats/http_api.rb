@@ -1,7 +1,8 @@
 module ATS
   class HttpAPI
-    def initialize(headers: {})
+    def initialize(headers: {}, debug: false)
       @default_headers = headers
+      @debug = debug
     end
 
     def execute(uri, request)
@@ -44,7 +45,7 @@ module ATS
       http = Net::HTTP.new(uri.host, uri.port)
       http.read_timeout = 30
       http.use_ssl = uri.scheme == "https"
-      http.set_debug_output(ATS.logger)
+      http.set_debug_output(ATS.logger) if @debug
       http
     end
 
