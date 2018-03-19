@@ -13,6 +13,8 @@ require 'ats/cli/amp4e/events'
 require 'ats/cli/amp4e/groups'
 require 'ats/cli/amp4e/policies'
 require 'ats/cli/amp4e/application'
+require 'ats/cli/shiro/tokens'
+require 'ats/cli/shiro/application'
 
 module ATS
   module CLI
@@ -24,6 +26,9 @@ module ATS
 
       desc 'amp4e SUBCOMMAND ...ARGS', 'interact with the AMP for Endpoints API'
       subcommand 'amp4e', AMP4E::Application
+
+      desc 'shiro SUBCOMMAND ...ARGS', 'interact with the AMP for Endpoints API'
+      subcommand 'shiro', Shiro::Application
 
       desc 'setup', 'setup'
       subcommand :setup, ATS::CLI::Setup

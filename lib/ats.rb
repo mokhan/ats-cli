@@ -18,6 +18,8 @@ require 'ats/threat_grid/organizations'
 require 'ats/threat_grid/samples'
 require 'ats/threat_grid/search'
 require 'ats/threat_grid/users'
+require 'ats/shiro/api'
+require 'ats/shiro/tokens'
 
 module ATS
   class << self
