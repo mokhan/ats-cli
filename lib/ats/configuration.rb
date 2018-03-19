@@ -15,7 +15,7 @@ module ATS
     end
 
     def [](key)
-      @configuration[key]
+      @configuration[key.to_sym]
     end
 
     def load_configuration(files = config_files)

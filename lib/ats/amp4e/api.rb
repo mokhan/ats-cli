@@ -44,19 +44,23 @@ module ATS
       private
 
       def build_uri(relative_url, version:)
-        URI.parse("#{api_host}/v#{version}/#{relative_url}")
+        URI::Generic.build(host: host, scheme: scheme, path: "/v#{version}/#{relative_url}")
       end
 
       def client_id
-        configuration[profile]['amp4e']['client_id']
+        configuration[profile][:amp4e][:client_id]
       end
 
       def client_secret
-        configuration[profile]['amp4e']['client_secret']
+        configuration[profile][:amp4e][:client_secret]
       end
 
-      def api_host
-        configuration[profile]['amp4e']['api_host']
+      def host
+        configuration[profile][:amp4e][:host]
+      end
+
+      def scheme
+        configuration[profile][:amp4e][:scheme]
       end
 
       def headers

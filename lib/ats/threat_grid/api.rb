@@ -16,7 +16,7 @@ module ATS
         configuration: ATS.configuration
       )
         @http = api
-        @profile = profile.to_s
+        @profile = profile.to_sym
         @configuration = configuration
       end
 
@@ -53,15 +53,19 @@ module ATS
       end
 
       def build_uri(relative_url, version:)
-        URI.parse("#{api_host}/api/v#{version}/#{relative_url}")
+        URI::Generic.build(host: host, scheme: scheme, path: "/api/v#{version}/#{relative_url}")
       end
 
       def api_key
-        configuration[profile]['threat_grid']['api_key']
+        configuration[profile][:threat_grid][:api_key]
       end
 
-      def api_host
-        configuration[profile]['threat_grid']['api_host']
+      def host
+        configuration[profile][:threat_grid][:host]
+      end
+
+      def scheme
+        configuration[profile][:threat_grid][:scheme]
       end
     end
   end

@@ -43,13 +43,15 @@ module ATS
         yaml = YAML.dump({
           default: {
             amp4e: {
-              api_host: 'https://api.amp.cisco.com',
               client_id: '',
               client_secret: '',
+              host: 'api.amp.cisco.com',
+              scheme: 'https',
             },
             threat_grid: {
-              api_host: 'https://example.com',
-              api_key: 'secret'
+              api_key: '',
+              host: 'panacea.threatgrid.com',
+              scheme: 'https',
             },
           }
         })
