@@ -22,6 +22,17 @@ module ATS
         ATS::Shiro::Tokens.new(self)
       end
 
+      def version
+        get("version")
+      end
+
+      def get(url, params: {}, version: 1)
+        http.get(build_uri(url, version: version), headers: headers, body: params) do |request, response|
+          puts response.body.inspect
+          JSON.parse(response.body, symbolize_names: true)
+        end
+      end
+
       def post(url, params: {}, version: 1)
         http.post(build_uri(url, version: version), headers: headers, body: params) do |request, response|
           JSON.parse(response.body, symbolize_names: true)

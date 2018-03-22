@@ -14,6 +14,7 @@ require 'ats/cli/amp4e/groups'
 require 'ats/cli/amp4e/policies'
 require 'ats/cli/amp4e/application'
 require 'ats/cli/shiro/tokens'
+require 'ats/cli/shiro/versions'
 require 'ats/cli/shiro/application'
 
 module ATS
