@@ -5,6 +5,10 @@ module ATS
 
       desc 'setup', 'Initialize the .atsrc file.'
       def setup
+        say "Default Configuration:", :green
+        yaml = YAML.dump(default_settings)
+        say yaml, :yellow
+
         say "Current Configuration:", :green
         say JSON.pretty_generate(configuration.to_h), :green
 
@@ -18,8 +22,6 @@ module ATS
         say "Configuration file not found."
         new_file = configuration.config_files.first
         say "New file created at #{new_file}."
-        yaml = YAML.dump(default_settings)
-        say yaml, :yellow
         IO.write(new_file, yaml)
         File.chmod(0600, new_file)
       end
@@ -39,6 +41,12 @@ module ATS
             threatgrid: {
               api_key: '',
               host: 'panacea.threatgrid.com',
+              port: 443,
+              scheme: 'https',
+            },
+            shiro: {
+              bearer_token: '',
+              host: 'auth.amp.cisco.com',
               port: 443,
               scheme: 'https',
             },
