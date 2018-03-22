@@ -28,7 +28,6 @@ module ATS
 
       def get(url, params: {}, version: 1)
         http.get(build_uri(url, version: version), headers: headers, body: params) do |request, response|
-          puts response.body.inspect
           JSON.parse(response.body, symbolize_names: true)
         end
       end
