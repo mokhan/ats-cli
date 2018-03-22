@@ -1,3 +1,5 @@
+require 'openssl'
+
 module ATS
   class HttpAPI
     def initialize(headers: {}, debug: false)
@@ -45,7 +47,10 @@ module ATS
       http = Net::HTTP.new(uri.host, uri.port)
       http.read_timeout = 30
       http.use_ssl = uri.scheme == "https"
-      http.set_debug_output(ATS.logger) if @debug
+      if debug?
+        http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+        http.set_debug_output(ATS.logger)
+      end
       http
     end
 
@@ -65,6 +70,10 @@ module ATS
       Net::HTTP::Get.new(uri.path, @default_headers.merge(headers)).tap do |x|
         x.body = JSON.generate(body)
       end
+    end
+
+    def debug?
+      @debug
     end
   end
 end
