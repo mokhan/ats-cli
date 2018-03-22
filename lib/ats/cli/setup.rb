@@ -21,6 +21,7 @@ module ATS
         yaml = YAML.dump(default_settings)
         say yaml, :yellow
         IO.write(new_file, yaml)
+        File.chmod(0600, new_file)
       end
 
       private
