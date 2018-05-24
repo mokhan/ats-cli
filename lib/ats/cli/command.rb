@@ -26,6 +26,7 @@ module ATS
 
       def configuration
         ATS.configure do |x|
+          Net::Hippie.logger = Logger.new('/dev/null') unless options['debug']
           x.debug = options['debug']
         end
       end
