@@ -10,7 +10,7 @@ module ATS
       attr_reader :http, :port, :host, :scheme, :bearer_token
 
       def initialize(configuration:, debug: false)
-        @http = HttpAPI.new(headers: HEADERS, debug: debug)
+        @http = Net::Hippie::Client.new(headers: HEADERS, verify_mode: debug ? OpenSSL::SSL::VERIFY_NONE : nil)
         @configuration = configuration
         @port = configuration[:port]
         @scheme = configuration[:scheme]

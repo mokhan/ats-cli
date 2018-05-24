@@ -7,14 +7,16 @@ module ATS
         'User-Agent' => "RubyGems/ATS #{ATS::VERSION}",
       }.freeze
 
-      attr_reader :http, :port, :host, :scheme, :client_id, :client_secret
+      attr_reader :http, :port, :host, :scheme
+      attr_reader :bearer_token, :client_id, :client_secret
 
       def initialize(configuration:, debug: false)
-        @http = HttpAPI.new(headers: HEADERS, debug: debug)
+        @http = Net::Hippie::Client.new(headers: HEADERS, verify_mode: debug ? OpenSSL::SSL::VERIFY_NONE : nil)
         @configuration = configuration
         @port = configuration[:port]
         @scheme = configuration[:scheme]
         @host = configuration[:host]
+        @bearer_token = configuration[:bearer_token]
         @client_id = configuration[:client_id]
         @client_secret = configuration[:client_secret]
       end
@@ -48,7 +50,11 @@ module ATS
       end
 
       def headers
-        { AUTHORIZATION: "Basic #{Base64.strict_encode64("#{client_id}:#{client_secret}")}" }
+        if bearer_token
+          { AUTHORIZATION: "Bearer #{bearer_token}" }
+        else
+          { AUTHORIZATION: "Basic #{Base64.strict_encode64("#{client_id}:#{client_secret}")}" }
+        end
       end
     end
   end

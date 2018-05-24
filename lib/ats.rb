@@ -1,11 +1,11 @@
 require 'base64'
 require 'json'
 require 'logger'
+require 'net/hippie'
 require 'net/http'
 require 'yaml'
 
 require 'ats/configuration'
-require 'ats/http_api'
 require 'ats/version'
 
 require 'ats/amp4e/api'
